@@ -16,24 +16,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Fibonacci y Factorial</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <h1>Fibonacci y Factorial</h1>
-<form method="POST">
-    <input type="number" name="numero" required>
-    <select name="operacion">
-        <option value="fibonacci">Fibonacci</option>
-        <option value="factorial">Factorial</option>
-    </select>
-    <button type="submit">Calcular</button>
-</form>
-<p><strong>Resultado:</strong> <?= $resultado ?></p>
+    <form method="POST">
+        <input type="number" name="numero" required>
+        <select name="operacion">
+            <option value="fibonacci">Fibonacci</option>
+            <option value="factorial">Factorial</option>
+        </select>
+        <button type="submit">Calcular</button>
+    </form>
+    <p><strong>Resultado:</strong> <?= $resultado ?></p>
     <div class="volver">
         <a href="../index.php">Menú Principal</a>
     </div>
 </body>
+
 </html>
