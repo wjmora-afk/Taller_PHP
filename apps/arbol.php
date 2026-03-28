@@ -2,14 +2,22 @@
 require_once("../classes/BinaryTree.php");
 
 $resultado = "";
+$grafico = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $pre = explode(",", $_POST["preorden"]);
-    $in = explode(",", $_POST["inorden"]);
+    $valores = explode(",", str_replace(" ", "", $_POST["valores"]));
 
     $tree = new BinaryTree();
-    $root = $tree->buildTree($pre, $in);
+    foreach ($valores as $v) {
+        if ($v !== "") {
+            $tree->insert($v);
+        }
+    }
 
-    $resultado = "Inorden reconstruido: " . $tree->printInorder($root);
+    $resultado = "<strong>Preorden:</strong> " . $tree->printPreorder($tree->root) . "<br>" .
+                 "<strong>Inorden:</strong> " . $tree->printInorder($tree->root) . "<br>" .
+                 "<strong>Postorden:</strong> " . $tree->printPostorder($tree->root);
+
+    $grafico = "<svg width='1000' height='600'>" . $tree->drawSVGTree($tree->root, 500, 50) . "</svg>";
 }
 ?>
 <!DOCTYPE html>
@@ -21,14 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <h1>Árbol Binario</h1>
-<form method="POST">
-    <label>Preorden (ej: A,B,D,E,C):</label>
-    <input type="text" name="preorden" required>
-    <label>Inorden:</label>
-    <input type="text" name="inorden" required>
-    <button type="submit">Construir Árbol</button>
-</form>
-<p><strong>Resultado:</strong> <?= $resultado ?></p>
+    <form method="POST">
+        <label>Valores del árbol (ej: 5,3,7,2,4,6,8 o A,B,C,D):</label>
+        <input type="text" name="valores" required>
+        <button type="submit">Generar Árbol</button>
+    </form>
+    <p><?= $resultado ?></p>
+    <?= $grafico ?>
+
     <div class="volver">
         <a href="../index.php">Menú Principal</a>
     </div>
