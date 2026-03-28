@@ -18,7 +18,7 @@ class BinaryTree {
         $this->root = null;
     }
 
-    // Insertar valores en el árbol (BST)
+  
     public function insert($value) {
         $this->root = $this->insertRec($this->root, $value);
     }
@@ -26,7 +26,7 @@ class BinaryTree {
     private function insertRec($node, $value) {
         if ($node == null) return new Node($value);
 
-        // Comparación que funciona tanto para números como letras
+        
         if ($value < $node->value) {
             $node->left = $this->insertRec($node->left, $value);
         } else {
@@ -35,7 +35,7 @@ class BinaryTree {
         return $node;
     }
 
-    // Recorridos
+    
     public function printPreorder($node) {
         if ($node == null) return "";
         return $node->value . " " . $this->printPreorder($node->left) . $this->printPreorder($node->right);
@@ -51,7 +51,7 @@ class BinaryTree {
         return $this->printPostorder($node->left) . $this->printPostorder($node->right) . $node->value . " ";
     }
 
-    // Dibujar árbol en HTML
+
   public function drawSVGTree($node, $x, $y, $offset = 150) {
     if ($node == null) return "";
 
