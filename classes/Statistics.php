@@ -28,10 +28,18 @@ class Statistics
 
     public function moda()
     {
-        $counts = array_count_values($this->numbers);
+        // Convertir a string para que array_count_values no falle
+        $stringNumbers = array_map("strval", $this->numbers);
+        $counts = array_count_values($stringNumbers);
+
+        if (empty($counts)) {
+            return "No hay datos";
+        }
+
         $max = max($counts);
         $moda = array_keys($counts, $max);
         return implode(", ", $moda);
     }
+
 }
 ?>

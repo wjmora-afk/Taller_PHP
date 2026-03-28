@@ -11,7 +11,7 @@
     <h1>Menú Taller PHP</h1>
     <div class="menu-container">
         <a href="apps/acronimo.php" class="menu-card">Acrónimo</a>
-        <a href="apps/factorial.php" class="menu-card">Fibonacci / Factorial</a>
+        <a href="apps/factorial.php" class="menu-card">Sucesión</a>
         <a href="apps/estadistica.php" class="menu-card">Estadística</a>
         <a href="apps/conjuntos.php" class="menu-card">Conjuntos</a>
         <a href="apps/binario.php" class="menu-card">Decimal a Binario</a>
